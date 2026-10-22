@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Heini's Salurn</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Heini's – traditionelles Gasthaus in Salurn, Familienbetrieb seit 1973. Hausgemachte, regionale Küche. Reservierung erbeten: +39 349 505 9138.">
+<link rel="icon" href="img/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&family=Source+Sans+3:wght@400;600&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="wrap topbar-in">
+    <a href="#top" class="brand" aria-label="Heini's"><img src="img/logo.png" alt="Heini's Bar Logo" width="44" height="44"><span>Heini's</span></a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#karte" data-i18n="nav.karte">Speisekarte</a>
+      <a href="#events" data-i18n="nav.events">Events</a>
+      <a href="#fotos" data-i18n="nav.fotos">Fotos</a>
+      <a href="#kontakt" data-i18n="nav.kontakt">Kontakt</a>
+    </nav>
+    <div class="lang" role="group" aria-label="Sprache / Lingua / Language">
+      <button type="button" data-lang="de">DE</button>
+      <button type="button" data-lang="it">IT</button>
+      <button type="button" data-lang="en">EN</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="wrap hero-in">
+      <div class="hero-text">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Gasthaus in Salurn · Familienbetrieb seit 1973</p>
+        <h1 data-i18n="hero.title">Einfache, hausgemachte Küche aus der Region.</h1>
+        <p class="lead" data-i18n="hero.lead"></p>
+        <div class="actions">
+          <a class="btn btn-primary js-tel" href="tel:+393495059138"><span data-i18n="hero.call">Anrufen</span> <span class="js-tel-text nowrap"></span></a>
+          <a class="btn btn-ghost" href="#reservieren" data-i18n="hero.reserve">Online anfragen</a>
+        </div>
+      </div>
+      <aside class="notice" aria-live="polite">
+        <p class="notice-title" data-i18n="notice.title">Bitte reservieren Sie vorab</p>
+        <p data-i18n="notice.text"></p>
+      </aside>
+    </div>
+  </section>
+
+  <div id="urlaub" class="urlaub" hidden>
+    <div class="wrap"><strong data-i18n="urlaub.title">Betriebsferien</strong> <span id="urlaub-text"></span></div>
+  </div>
+
+  <section class="facts" aria-label="Öffnungszeiten">
+    <dl class="wrap facts-in">
+      <div><dt data-i18n="info.kueche">Warme Küche</dt><dd id="fact-kueche"></dd></div>
+      <div><dt data-i18n="info.ruhetag">Ruhetag</dt><dd id="fact-ruhetag"></dd></div>
+      <div id="fact-bar-wrap" hidden><dt data-i18n="info.bar">Bar</dt><dd id="fact-bar"></dd></div>
+      <div><dt data-i18n="info.adresse">Adresse</dt><dd><a id="fact-adresse" target="_blank" rel="noopener"></a></dd></div>
+      <div><dt data-i18n="info.parken">Parken</dt><dd data-i18n="info.parkenText"></dd></div>
+    </dl>
+  </section>
+
+  <section id="karte" class="section">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="karte.title">Speisekarte</h2>
+        <p class="sub"><span data-i18n="karte.lead"></span> <span class="stand"><span data-i18n="karte.stand">Stand</span>: <span id="karte-stand"></span></span></p>
+        <p class="beispiel" data-i18n="karte.beispiel"></p>
+      </div>
+      <div id="karte-list" class="menu"></div>
+      <details class="allergene">
+        <summary data-i18n="karte.allergeneTitle">Allergene</summary>
+        <ol id="allergene-list"></ol>
+        <p data-i18n="karte.allergeneHinweis"></p>
+      </details>
+    </div>
+  </section>
+
+  <section id="events" class="section section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <h2 data-i18n="events.title">Events &amp; Saison</h2>
+        <p class="sub" data-i18n="events.lead"></p>
+      </div>
+      <div id="events-list" class="events"></div>
+    </div>
+  </section>
+
+  <section id="fotos" class="section">
+    <div class="wrap">
+      <div class="section-head"><h2 data-i18n="fotos.title">Aus unserer Küche</h2></div>
+      <div id="galerie" class="gallery"></div>
+    </div>
+  </section>
+
+  <section id="reservieren" class="section section-dark">
+    <div class="wrap res">
+      <div class="res-info">
+        <h2 data-i18n="res.title">Tisch reservieren</h2>
+        <p data-i18n="res.lead"></p>
+        <p class="res-label" data-i18n="res.phoneLabel">Telefon &amp; WhatsApp</p>
+        <a class="res-phone js-tel" href="tel:+393495059138"><span class="js-tel-text"></span></a>
+        <p class="res-times" id="res-times"></p>
+      </div>
+
+      <form id="res-form" class="form" novalidate>
+        <div class="row">
+          <label for="f-name"><span data-i18n="f.name">Name</span> *</label>
+          <input id="f-name" name="name" autocomplete="name" required>
+        </div>
+        <div class="row two">
+          <div><label for="f-tel"><span data-i18n="f.tel">Telefon</span> *</label>
+            <input id="f-tel" name="telefon" type="tel" autocomplete="tel" required></div>
+          <div><label for="f-email" data-i18n="f.email">E-Mail (optional)</label>
+            <input id="f-email" name="email" type="email" autocomplete="email"></div>
+        </div>
+        <div class="row three">
+          <div><label for="f-datum"><span data-i18n="f.datum">Datum</span> *</label>
+            <input id="f-datum" name="datum" type="date" required></div>
+          <div><label for="f-zeit"><span data-i18n="f.zeit">Uhrzeit</span> *</label>
+            <select id="f-zeit" name="uhrzeit" required></select></div>
+          <div><label for="f-personen"><span data-i18n="f.personen">Personen</span> *</label>
+            <input id="f-personen" name="personen" type="number" min="1" max="60" value="2" required></div>
+        </div>
+        <div class="row">
+          <label for="f-anlass" data-i18n="f.anlass">Event (optional)</label>
+          <select id="f-anlass" name="event"></select>
+        </div>
+        <div class="row">
+          <label for="f-notiz" data-i18n="f.notiz">Anmerkungen</label>
+          <textarea id="f-notiz" name="anmerkungen" rows="3"></textarea>
+        </div>
+        <label class="check" for="f-consent">
+          <input id="f-consent" type="checkbox" required>
+          <span><span data-i18n="f.consent"></span> <a href="datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a></span>
+        </label>
+        <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <p id="f-msg" class="msg" role="status" hidden></p>
+        <div class="actions">
+          <button type="submit" class="btn btn-primary" id="f-submit" data-i18n="f.senden">Anfrage senden</button>
+          <button type="button" class="btn btn-ghost" id="f-wa" data-i18n="f.whatsapp">Per WhatsApp senden</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section about">
+    <div class="wrap about-in">
+      <div>
+        <p class="year">1973</p>
+        <h2 data-i18n="about.title">Seit 1973 in Familienhand</h2>
+        <p data-i18n="about.text"></p>
+      </div>
+      <div>
+        <h3 data-i18n="gut.title">Gut zu wissen</h3>
+        <ul class="ticks">
+          <li data-i18n="gut.hunde">Hunde willkommen</li>
+          <li data-i18n="gut.barriere">Barrierefrei</li>
+          <li data-i18n="gut.karte">Kartenzahlung möglich</li>
+          <li data-i18n="gut.terrasse">Terrasse</li>
+          <li data-i18n="gut.gruppen">Gruppen auf Anfrage</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="kontakt" class="section section-alt">
+    <div class="wrap contact">
+      <h2 data-i18n="kontakt.title">Kontakt &amp; Anfahrt</h2>
+      <div class="contact-grid">
+        <p><strong>Heini's</strong><br><span id="c-adresse"></span></p>
+        <p><a class="js-tel" href="tel:+393495059138"><span class="js-tel-text"></span></a><br>
+           <a id="c-email" href="mailto:barsalurn@yahoo.it"></a></p>
+        <p><a id="c-maps" target="_blank" rel="noopener" data-i18n="kontakt.maps">In Google Maps öffnen</a><br>
+           <a id="c-fb" target="_blank" rel="noopener">Facebook</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-in">
+    <span>© <span id="jahr"></span> Heini's · Salurn</span>
+    <span><a href="impressum.html" data-i18n="footer.impressum">Impressum</a> · <a href="datenschutz.html" data-i18n="footer.datenschutz">Datenschutz</a></span>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
